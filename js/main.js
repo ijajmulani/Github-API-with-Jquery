@@ -89,8 +89,8 @@ $(function () {
             $.each(data.items, function (key, value) {
               $div = $searchTemplate.clone();
               $div.attr('tabindex', key + 1);
-              $div.data('repoName', value.name);
-              $div.data('fullName', value.full_name);
+              $div.data('repoName', value.name).attr('data-repo-name', value.name);
+              $div.data('fullName', value.full_name).attr('data-full-name', value.full_name);
               $div.find('.js-search').text(value.full_name);
               htmlData += $div[0].outerHTML;
 
@@ -130,26 +130,30 @@ $(function () {
     $.ajax({
       url: 'https://api.github.com/search/issues?q=+state:open+created:'+ today +'+type:issue+repo:' + searchKey,
       type: 'get',
-      success: function (data) {
-        var $issuesTable = $('.js-issues-table');
+      success: function (response) {
+        var $issuesTable = $('.js-issues-table'),
+	    htmlData = "";
         // $issuesTable.html(data);
         $issuesTable.load("templates/search_issues.html", function(data) {
           $issuesTableTemplate = $(".js-issues-template").remove();
           $rows = $issuesTableTemplate.find('.js-table-row').remove();
 
-          $.each(data.items, function (key, issue) {
+          $.each(response.items, function (key, issue) {
             $div = $rows.clone();
-            $div.find('.js-issue-title').href('/issue/searchKey/' + issue.number);
-            $div.find('.js-issue-title').data('number', issue.number).data('repoName', searchKey).text(issue.title);
+            $div.find('.js-issue-title a').attr('href', '/issue/searchKey/' + issue.number);
+            $div.find('.js-issue-title a').attr('data-number', issue.number).attr('data-repo-name', searchKey).text(issue.title);
             $div.find('.js-issue-description').text(issue.body);
-            $div.find('a').href('/user/' + issue.user.login);
-            $div.find('img').src(issue.user.avatar_url);
+            $div.find('a').attr('href', '/user.html?userid=' + issue.user.login);
+            $div.find('img').attr('src', issue.user.avatar_url);
         
-            $div.data('repoName', value.name);
-            $div.data('fullName', value.full_name);
-            $div.find('.js-search').text(value.full_name);
+            $div.data('repoName', issue.name);
+            $div.data('fullName', issue.full_name);
+            $div.find('.js-search').text(issue.full_name);
             htmlData += $div[0].outerHTML;
           });
+	  $issuesTableTemplate.find('tbody').html(htmlData);
+	  $issuesTable.html($issuesTableTemplate[0].outerHTML)
+
         });
       }
     });
