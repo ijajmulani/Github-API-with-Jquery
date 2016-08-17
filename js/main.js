@@ -140,11 +140,11 @@ $(function () {
 
           $.each(response.items, function (key, issue) {
             $div = $rows.clone();
-            $div.find('.js-issue-title a').attr('href', '/issue/searchKey/' + issue.number);
+            $div.find('.js-issue-title a').attr('href', '/issue.html?number=' + issue.number + "&reponame=" + searchKey);
             $div.find('.js-issue-title a').attr('data-number', issue.number).attr('data-repo-name', searchKey).text(issue.title);
             $div.find('.js-issue-description').text(issue.body);
-            $div.find('a').attr('href', '/user.html?userid=' + issue.user.login);
-            $div.find('img').attr('src', issue.user.avatar_url);
+            $div.find('.js-issue-user a').attr('href', '/user.html?userid=' + issue.user.login);
+            $div.find('.js-issue-user img').attr('src', issue.user.avatar_url);
         
             $div.data('repoName', issue.name);
             $div.data('fullName', issue.full_name);
@@ -156,11 +156,5 @@ $(function () {
         });
       }
     });
-  });
-
-  $('.js-issues-table').on('click', 'js-repo-title', function(e) {
-    e.preventDefault();
-    var $this = $(this),
-        url = $this.find('a').data('url');
   });
 });
