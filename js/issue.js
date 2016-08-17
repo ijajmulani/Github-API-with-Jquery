@@ -23,6 +23,8 @@ $(function () {
           $div.find('.user-photo').attr('src', issue.user.avatar_url);
           $div.find('.js-comment-body').text(issue.body);
           $div.find('.js-issue-minor-details').attr('data-issue-id', issue.id);
+
+          issueVisited($('.js-issue-minor-details').data('issueId'));
         }
       });
     }
@@ -38,6 +40,4 @@ $(function () {
     localStorage.setItem(issueId, issueCount); 
     $('.js-issue-visited-count').text(issueCount);
   }
-
-  issueVisited($('.js-issue-minor-details').data('issueId'));
 });
