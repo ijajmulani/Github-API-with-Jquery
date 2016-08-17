@@ -132,7 +132,7 @@ $(function () {
       type: 'get',
       success: function (response) {
         var $issuesTable = $('.js-issues-table'),
-	    htmlData = "";
+          htmlData = "";
         // $issuesTable.html(data);
         $issuesTable.load("templates/search_issues.html", function(data) {
           $issuesTableTemplate = $(".js-issues-template").remove();
@@ -151,9 +151,8 @@ $(function () {
             $div.find('.js-search').text(issue.full_name);
             htmlData += $div[0].outerHTML;
           });
-	  $issuesTableTemplate.find('tbody').html(htmlData);
-	  $issuesTable.html($issuesTableTemplate[0].outerHTML)
-
+      	  $issuesTableTemplate.find('tbody').html(htmlData);
+      	  $issuesTable.html($issuesTableTemplate[0].outerHTML);
         });
       }
     });

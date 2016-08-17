@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Latest compiled and minified CSS -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  
+  <title>UrbanPiper</title>
+  <script src="js/user.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/user.css" />
+</head>
+<body>
+  <div class="container js-container">  
+    <div class="user-photo js-user-photo"><img src="{{user.avatar_url}}"></div>
+    <div class="user-details">
+      <div class="user-name js-user-name">Name: {{user.name}}</div>
+      <div class="user-github-url">Github URL: <a class="js-user-github-url" href="{{user.html_url}}">{{user.html_url}}</a></div>
+      <div class="user-id js-user-id">User id: {{user.login}}</div>
+      <div class="user-bio js-user-bio">Bio: {{user.bio}}</div>
+      <div class="user-location js-user-location">Location: {{user.location}}</div>
+      <div class="user-joined-on js-user-joined-on">Joined on: {{user.created_at|date:"j M Y"}}</div>
+      <div class="social-activities">
+        <div class="activity-box"><span class="number js-followers">{{user.followers}}</span>Follower</div>
+        <div class="activity-box"><span class="number js-following">{{user.following}}</span>Following</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
