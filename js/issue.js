@@ -10,7 +10,7 @@ $(function () {
   }
 
   function onload() {
-    var reponame = getParameterByName('userid'),
+    var reponame = getParameterByName('reponame'),
         number = getParameterByName('number');
 
     if (reponame && number) {
@@ -21,9 +21,9 @@ $(function () {
           $div = $('.js-container');
           $div.find('.js-issue-title').text(issue.title);
           $div.find('.js-issue-number').text(issue.number);
-          $div.find('.js-issue-status').text(issue.number);
+          $div.find('.js-issue-state').text(issue.state);
           $div.find('.js-username').attr('href', '/user.html?userid=' + issue.user.login).text(issue.user.login);
-          $div.find('.js-issue-creation').text("opened this issue on " + issue.created_at + "  " issue.comments + " comments");
+          $div.find('.js-issue-creation').text("opened this issue on " + issue.created_at + "  " + issue.comments + " comments");
           $div.find('.user-photo').attr('src', issue.user.avatar_url);
           $div.find('.js-comment-body').text(issue.body);
         }
