@@ -10,6 +10,7 @@
   
   <title>UrbanPiper</title>
   <link rel="stylesheet" type="text/css" href="css/issue.css" />
+  <script src="js/helper.js"></script>
   <script src="js/issue.js"></script>
 </head>
 <body>
@@ -26,7 +27,7 @@
     <div class="issue-user-details">
       <img class="user-photo js-user-photo" src="{{issue.user.avatar_url}}">
       <div class="comment-box">
-        <div class="comment-header"><a class="username js-username" href="/user/{{issue.user.login}}">{{issue.user.login}}</a> <span class="js-issue-creation"></span></div>
+        <div class="comment-header"><a class="username js-username" href="/user/{{issue.user.login}}">{{issue.user.login}}</a> <span class="js-comment-date"></span></div>
         <div class="comment-body js-comment-body">{{issue.body}}</div>
       </div>
     </div>

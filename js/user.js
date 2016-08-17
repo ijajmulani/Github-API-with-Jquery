@@ -1,16 +1,6 @@
 $(function () {
-  function getParameterByName(name) {
-    var url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  }
-
   function onload() {
-    var userid = getParameterByName('userid');
+    var userid = Helper.getParameterByName('userid');
     if (userid) {
       $.ajax({
         url: 'https://api.github.com/users/' + userid,
@@ -24,7 +14,7 @@ $(function () {
           $div.find('.js-user-id').text(user.login);
           $div.find('.js-user-bio').text(user.bio);
           $div.find('.js-user-location').text(user.location);
-          $div.find('.js-user-joined-on').text(user.created_at);
+          $div.find('.js-user-joined-on').text(Helper.dateFormat(user.created_at));
           $div.find('.js-followers').text(user.followers);
           $div.find('.js-following').text(user.following);
 

@@ -1,17 +1,8 @@
 $(function () {
-  function getParameterByName(name) {
-    var url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  }
 
   function onload() {
-    var reponame = getParameterByName('reponame'),
-        number = getParameterByName('number');
+    var reponame = Helper.getParameterByName('reponame'),
+        number = Helper.getParameterByName('number');
 
     if (reponame && number) {
       $.ajax({
@@ -20,10 +11,13 @@ $(function () {
         success: function (issue) {
           $div = $('.js-container');
           $div.find('.js-issue-title').text(issue.title);
-          $div.find('.js-issue-number').text(issue.number);
+          $div.find('.js-issue-number').text(" #"+issue.number);
           $div.find('.js-issue-state').text(issue.state);
           $div.find('.js-username').attr('href', '/user.html?userid=' + issue.user.login).text(issue.user.login);
-          $div.find('.js-issue-creation').text("opened this issue on " + issue.created_at + "  " + issue.comments + " comments");
+          $div.find('.js-issue-creation').text(" opened this issue on " + Helper.dateFormat(issue.created_at) + "  " + issue.comments + "comments");
+
+          $div.find('.js-comment-date').text(" commented on " + Helper.dateFormat(issue.created_at));
+          
           $div.find('.user-photo').attr('src', issue.user.avatar_url);
           $div.find('.js-comment-body').text(issue.body);
         }
