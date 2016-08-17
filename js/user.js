@@ -18,7 +18,7 @@ $(function () {
         success: function (user) {
           $div = $('.js-container');
 
-          $div.find('.js-user-photo').text(user.avatar_url);
+          $div.find('.js-user-photo img').attr('src', user.avatar_url);
           $div.find('.js-user-name').text(user.name);
           $div.find('.js-user-github-url').text(user.html_url).attr('href', user.html_url);
           $div.find('.js-user-id').text(user.login);
