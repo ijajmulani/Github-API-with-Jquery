@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="container">  
+  <div class="user-photo"><img src="{{user.avatar_url}}"></div>
+  <div class="user-details">
+    <div class="user-name">Name: {{user.name}}</div>
+    <div class="user-github-url">Github URL: <a href="{{user.html_url}}">{{user.html_url}}</a></div>
+    <div class="user-id">User id: {{user.login}}</div>
+    <div class="user-bio">Bio: {{user.bio}}</div>
+    <div class="user-location">Location: {{user.location}}</div>
+    <div class="user-joined-on">Joined on: {{user.created_at|date:"j M Y"}}</div>
+    <div class="social-activities">
+      <div class="activity-box"><span class="number">{{user.followers}}</span>Follower</div>
+      <div class="activity-box"><span class="number">{{user.following}}</span>Following</div>
+    </div>
+  </div>
+ 
+</div>
+
+
+
+{% endblock content %}
+
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}" />
+{% endblock extra_css %}
+
+

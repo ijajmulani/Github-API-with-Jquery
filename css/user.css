@@ -1,0 +1,31 @@
+.container{
+  padding: 10px;
+}
+.user-photo {
+  display: inline-block;
+}
+.user-photo img{
+  height: 230px;
+  width: 230px;
+  border-radius: 6px !important;
+}
+.user-details{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 15px;
+  font-weight: 600;
+}
+.social-activities {
+  display: inline-block;
+  margin-top: 20px;
+}
+.activity-box .number {
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+.activity-box{
+  float: left;
+  margin-left: 10px;
+}
