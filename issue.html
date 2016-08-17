@@ -19,7 +19,7 @@
       <h2 class="issue-title js-issue-title">{{issue.title}}</h2> <h2 class="issue-number js-issue-number">  #{{issue.number}}</h2>
       <h2 class="issue-visited-count">Visited Count: <span class="js-issue-visited-count">1</span></h2>
     </div>
-    <div class="issue-minor-details js-issue-minor-details">
+    <div class="issue-minor-details js-issue-minor-details" data-issue-id="">
       <div class="issue-status js-issue-state">{{issue.state}}</div>
       <div class="issue-creation"><a class="username js-username" href="/user/{{issue.user.login}}">{{issue.user.login}}</a><span class="js-issue-creation"></span></div>
     </div>
