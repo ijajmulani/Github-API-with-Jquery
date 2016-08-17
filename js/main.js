@@ -145,10 +145,7 @@ $(function () {
             $div.find('.js-issue-description').text(issue.body);
             $div.find('.js-issue-user a').attr('href', '/user.html?userid=' + issue.user.login);
             $div.find('.js-issue-user img').attr('src', issue.user.avatar_url);
-        
-            $div.data('repoName', issue.name);
-            $div.data('fullName', issue.full_name);
-            $div.find('.js-search').text(issue.full_name);
+    
             htmlData += $div[0].outerHTML;
           });
       	  $issuesTableTemplate.find('tbody').html(htmlData);
